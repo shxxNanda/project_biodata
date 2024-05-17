@@ -1,5 +1,6 @@
 package com.example.biodata
 
+import DataModel
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import java.util.UUID
 
 class AddActivity : AppCompatActivity() {
 
@@ -25,6 +27,9 @@ class AddActivity : AppCompatActivity() {
         val editTextAddress = findViewById<EditText>(R.id.editTextAddress)
 
         buttonAdd.setOnClickListener {
+            //generate id
+            val id = UUID.randomUUID().toString()
+
             // Retrieve values from fields
             val name = editTextName.text.toString()
             val gender = if (radioButtonMale.isChecked) "Laki-laki" else "Perempuan"
@@ -32,11 +37,14 @@ class AddActivity : AppCompatActivity() {
             val dateOfBirth = editTextDateOfBirth.text.toString()
             val address = editTextAddress.text.toString()
 
-            // Create an Intent to return the data to MainActivity
-            val resultIntent = Intent()
-            resultIntent.putExtra("newData", "$name,$gender,$placeOfBirth,$dateOfBirth,$address")
+            // Create a DataModel object with the retrieved values
+            val newData = DataModel(id, name, gender, placeOfBirth, dateOfBirth, address)
 
-            // Set the result to RESULT_OK and attach the Intent containing the data
+            // Create an Intent to return the DataModel object to MainActivity
+            val resultIntent = Intent()
+            resultIntent.putExtra("newData", newData)
+
+            // Set the result to RESULT_OK and attach the Intent containing the DataModel object
             setResult(Activity.RESULT_OK, resultIntent)
 
             // Finish AddActivity and return to MainActivity

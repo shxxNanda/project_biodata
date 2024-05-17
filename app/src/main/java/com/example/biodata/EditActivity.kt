@@ -1,9 +1,12 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.biodata
 
 import DataModel
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.biodata.databinding.ActivityEditBinding
 
@@ -15,37 +18,37 @@ class EditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit)
-
         binding = ActivityEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tangkap data yang dikirim dari AddActivity
-        val name = intent.getStringExtra("name")
-        val gender = intent.getStringExtra("gender")
-        val placeOfBirth = intent.getStringExtra("placeOfBirth")
-        val dateOfBirth = intent.getStringExtra("dateOfBirth")
-        val address = intent.getStringExtra("address")
+        // Tangkap data yang dikirim dari Menu Utama
+        dataToEdit = intent.getParcelableExtra("data_to_edit") ?: DataModel("", "", "", "", "","")
+        itemPosition = intent.getIntExtra("item_position", -1) // Ambil posisi item
+        val dataKey = intent.getStringExtra("dataKey") // Ambil dataKey
+
+        // Toast data
+        val dataToast = "Data yang akan diedit: ${dataToEdit.name}" // Ubah ini sesuai kebutuhan Anda
+        Toast.makeText(this, dataToast, Toast.LENGTH_SHORT).show()
 
         // Gunakan data untuk menginisialisasi tampilan pengeditan
         binding.apply {
-            editTextName.setText(name)
-            if (gender == "Laki-laki") {
+            editTextName.setText(dataToEdit.name)
+            if (dataToEdit.gender == "Laki-laki") {
                 radioButtonMale.isChecked = true
             } else {
                 radioButtonFemale.isChecked = true
             }
-            editTextPlaceOfBirth.setText(placeOfBirth)
-            editTextDateOfBirth.setText(dateOfBirth)
-            editTextAddress.setText(address)
+            editTextPlaceOfBirth.setText(dataToEdit.placeOfBirth)
+            editTextDateOfBirth.setText(dataToEdit.dateOfBirth)
+            editTextAddress.setText(dataToEdit.address)
 
             buttonSave.setOnClickListener {
-                saveEditedData()
+                saveEditedData(dataKey)
             }
         }
     }
 
-    private fun saveEditedData() {
+    private fun saveEditedData(dataKey: String?) {
         // Mendapatkan data yang diedit dari formulir
         val editedName = binding.editTextName.text.toString()
         val editedGender = if (binding.radioButtonMale.isChecked) "Laki-laki" else "Perempuan"
@@ -54,15 +57,13 @@ class EditActivity : AppCompatActivity() {
         val editedAddress = binding.editTextAddress.text.toString()
 
         // Membuat objek DataModel dari data yang diedit
-        val editedData = DataModel(editedName, editedGender, editedPlaceOfBirth, editedDateOfBirth, editedAddress)
+        val editedData = DataModel(dataToEdit.id, editedName, editedGender, editedPlaceOfBirth, editedDateOfBirth, editedAddress)
 
         // Mengembalikan data yang diedit beserta posisi item ke MainActivity
         val returnIntent = Intent()
         returnIntent.putExtra("editedData", editedData)
         returnIntent.putExtra("editedDataPosition", itemPosition)
-
-        val dataKey = intent.getStringExtra("dataKey")
-        returnIntent.putExtra("dataKey", dataKey) // Kirim kembali kunci data
+        dataKey?.let { returnIntent.putExtra("dataKey", it) } // Kirim kembali kunci data jika tidak null
 
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
