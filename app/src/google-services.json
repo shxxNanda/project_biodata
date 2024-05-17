@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1026377398467",
+    "firebase_url": "https://biodata-7a07b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "biodata-7a07b",
+    "storage_bucket": "biodata-7a07b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026377398467:android:56b83bcd218ae701788a76",
+        "android_client_info": {
+          "package_name": "com.example.biodata"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa-B3vtGGNfdD0O_gXYU2aH1ppP1sUvkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

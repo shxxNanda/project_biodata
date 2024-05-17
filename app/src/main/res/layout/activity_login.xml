@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_margin="20sp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Reviewer!"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginTop="20sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+        </RelativeLayout>
+
+        <!-- Email Input -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter your Email"
+            android:inputType="textEmailAddress"
+            android:layout_margin="5dp"/>
+
+        <!-- Password Input -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter your Password"
+            android:inputType="textPassword"
+            android:layout_margin="5dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <!-- Text asking if user has an account -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account?"
+                android:textSize="16sp"
+                android:layout_marginRight="20sp"/>
+
+            <!-- Sign Up button -->
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Sign Up!"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

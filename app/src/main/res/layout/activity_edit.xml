@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewName"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:hint="Masukkan nama"
+        android:importantForAccessibility="yes"/>
+
+    <TextView
+        android:id="@+id/textViewGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kelamin"
+        android:textSize="18sp"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/textViewGender"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laki-laki"
+            android:importantForAccessibility="yes"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perempuan"
+            android:importantForAccessibility="yes"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewPlaceOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempat Lahir"
+        android:textSize="18sp"
+        android:layout_below="@id/radioGroupGender"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPlaceOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewPlaceOfBirth"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:hint="Masukkan tempat lahir"
+        android:importantForAccessibility="yes"/>
+
+    <TextView
+        android:id="@+id/textViewDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal Lahir"
+        android:textSize="18sp"
+        android:layout_below="@id/editTextPlaceOfBirth"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDateOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewDateOfBirth"
+        android:layout_marginTop="8dp"
+        android:inputType="date"
+        android:hint="Masukkan tanggal lahir"
+        android:importantForAccessibility="yes" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alamat"
+        android:textSize="18sp"
+        android:layout_below="@id/editTextDateOfBirth"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/textViewAddress"
+        android:layout_marginTop="16dp"
+        android:inputType="textMultiLine"
+        android:hint="Masukkan alamat"
+        android:importantForAccessibility="yes" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextAddress"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true"
+        android:text="Simpan"
+        android:onClick="saveEditedData"/>
+</RelativeLayout>
